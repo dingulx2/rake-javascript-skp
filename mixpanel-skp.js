@@ -80,6 +80,7 @@ Globals should be all caps
     var   _                 = {}
         , DEBUG             = false
         , DEFAULT_CONFIG    = {
+              //"api_host":                   HTTP_PROTOCOL + 'api.mixpanel.com'
               "api_host":                   HTTP_PROTOCOL + 'api.mixpanel.com'
             , "cross_subdomain_cookie":     true
             , "cookie_name":                ""
