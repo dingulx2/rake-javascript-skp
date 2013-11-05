@@ -1377,6 +1377,41 @@ Globals should be all caps
         return true;
     };
 
+
+    /**
+     * @param {string} query
+     * @param {string} event_name
+     * @param {Object=} properties
+     * @param {function(...[*])=} user_callback
+     */
+    DomTracker.prototype.trackSimple = function(query, event_name, properties, user_callback) {
+        var that = this
+        , elements = _.dom_query(query);
+
+        if (elements.length == 0) {
+            console.error("The DOM query (" + query + ") returned 0 elements");
+            return;
+        }
+
+        _.each(elements, function(element) {
+            _.register_event(element, this.override_event, function(e) {
+                var options = {}
+                    , props = that.create_properties(properties, this)
+                    , timeout = that.mp.get_config("track_links_timeout");
+
+                that.event_handler(e, this, options);
+
+                // in case the mixpanel servers don't get back to us in time
+                window.setTimeout(that.track_callback(user_callback, props, options, true), timeout);
+
+                // fire the tracking event
+                that.mp.track(event_name, props, that.track_callback(user_callback, props, options));
+            });
+        }, this);
+
+        return true;
+    };
+
     /**
      * @param {function(...[*])} user_callback
      * @param {Object} props
@@ -2857,6 +2892,7 @@ Globals should be all caps
     MixpanelLib.prototype['init']                       = MixpanelLib.prototype.init;
     MixpanelLib.prototype['disable']                    = MixpanelLib.prototype.disable;
     MixpanelLib.prototype['track']                      = MixpanelLib.prototype.track;
+    MixpanelLib.prototype['trackSimple']                = MixpanelLib.prototype.trackSimple;
     MixpanelLib.prototype['track_links']                = MixpanelLib.prototype.track_links;
     MixpanelLib.prototype['track_forms']                = MixpanelLib.prototype.track_forms;
     MixpanelLib.prototype['track_pageview']             = MixpanelLib.prototype.track_pageview;
