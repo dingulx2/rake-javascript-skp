@@ -54,7 +54,7 @@ rake-javascript-skp
 	<!-- end Mixpanel -->
 
 
-== Original Source Code from Mixpanel ==
+### Original Source Code from Mixpanel ###
 Mixpanel JS Library 
 
 Copyright 2012, Mixpanel, Inc. All Rights Reserved
