@@ -1,4 +1,4 @@
-# rake-javascript-skp #
+rake-javascript-skp
 ===================
 
 ## Javascript Library for web application tracking ##
@@ -7,6 +7,7 @@
 
 
 
+#### How to use ####
 	<!-- start Mixpanel -->
 	<script type="text/javascript">
 	(function(e,b){if(!b.__SV){
