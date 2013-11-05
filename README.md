@@ -1,9 +1,9 @@
-rake-javascript-skp
+# rake-javascript-skp #
 ===================
 
-Javascript Library for web application tracking
+## Javascript Library for web application tracking ##
 
-based on Mixpanel JS Library
+### based on Mixpanel JS Library ###
 
 
 
