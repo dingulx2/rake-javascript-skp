@@ -1,4 +1,11 @@
 /*
+ *
+ * rake-javascript-skp
+ * ===================
+ *
+ * ## Javascript Library for web application tracking ##
+ * ### based on Mixpanel JS Library ###
+ *
  * Mixpanel JS Library v2.2.0
  *
  * Copyright 2012, Mixpanel, Inc. All Rights Reserved
@@ -81,7 +88,8 @@ Globals should be all caps
         , DEBUG             = false
         , DEFAULT_CONFIG    = {
               //"api_host":                   HTTP_PROTOCOL + 'api.mixpanel.com'
-              "api_host":                   HTTP_PROTOCOL + 'api.mixpanel.com'
+              "api_host":                   HTTP_PROTOCOL + 'rake.skplanet.com:8443/log/'
+              // "api_host":                   HTTP_PROTOCOL + 'localhost:8000'
             , "cross_subdomain_cookie":     true
             , "cookie_name":                ""
             , "loaded":                     function() {}
@@ -2203,8 +2211,8 @@ Globals should be all caps
         console.log(truncated_data);
 
         this._send_request(
-            this.get_config('api_host') + "/track/",
-            { 'data': encoded_data },
+            this.get_config('api_host') + "/log/",
+            { 'data': encoded_data ,'compress':'plain'},
             this._prepare_callback(callback, truncated_data)
         );
 
